@@ -1,0 +1,24 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Inventory : MonoBehaviour
+{
+
+    public ItemUI itemUI;
+    public GameObject invetoryUI;
+    public List<Item> inventoryItems = new List<Item>();
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            invetoryUI.SetActive(!invetoryUI.activeSelf);
+    }
+
+    public void AddItem(Item item)
+    {
+        inventoryItems.Add(item);
+        itemUI.UpdateItems(inventoryItems);
+    }
+
+}

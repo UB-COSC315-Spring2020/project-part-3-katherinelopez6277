@@ -1,0 +1,27 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ItemUI : MonoBehaviour
+{
+
+    public GameObject slotPrefab;
+
+    public void UpdateItems(List<Item> inventoryItems)
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Item item in inventoryItems)
+        {
+            GameObject slot = Instantiate(slotPrefab, transform);
+            slot.transform.GetChild(0).GetComponent<Image>().sprite = item.itemSprite;
+            slot.GetComponentInChildren<TextMeshProUGUI>().text = item.itemName;
+        }
+    }
+
+}

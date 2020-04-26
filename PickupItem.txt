@@ -1,0 +1,22 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PickupItem : MonoBehaviour
+{
+
+    public GameObject imodel;
+    public Sprite isprite;
+    public string iname;
+    public int iamount;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.GetComponent<Inventory>().AddItem(new Item { itemSprite = isprite, itemName = iname, itemAmount = iamount });
+            Destroy(gameObject);
+        }
+    }
+
+}
